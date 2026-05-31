@@ -10,7 +10,7 @@ export class CommentsApi extends BaseApi {
 
   async createComment(slug, token = null, comment) {
     return await this.step(`Create new comment`, async () => {
-      return await this.client.post(ROUTES.comments().create, {
+      return await this.client.post(ROUTES.comments(slug).create, {
         data: { comment: comment },
         headers: {
           authorization: `Token ${token}`,
@@ -22,7 +22,7 @@ export class CommentsApi extends BaseApi {
 
   async deleteComment(slug, token = null, commentID) {
     return await this.step(`Delete comment`, async () => {
-      return await this.client.delete(ROUTES.comments().delete, {
+      return await this.client.delete(ROUTES.comments(slug, commentID).delete, {
         headers: {
           authorization: `Token ${token}`,
           ...this._headers,
