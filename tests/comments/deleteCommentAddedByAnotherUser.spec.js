@@ -36,5 +36,5 @@ test(`Delete comment added by the another user`, async ({
     commentID
   )
 
-  await api.assertSuccessResponseCode(response);
+  await api.assertForbiddenResponseCode(responseDelete);
 });

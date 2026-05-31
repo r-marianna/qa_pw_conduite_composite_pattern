@@ -22,7 +22,7 @@ export class CommentsApi extends BaseApi {
 
   async deleteComment(slug, token = null, commentID) {
     return await this.step(`Delete comment`, async () => {
-      return await this.client.post(ROUTES.comments().delete, {
+      return await this.client.delete(ROUTES.comments().delete, {
         headers: {
           authorization: `Token ${token}`,
           ...this._headers,
